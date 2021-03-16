@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+{% block title %}KYC Form: Page 1{% endblock %}
+{% block content %}
+<div class="col-md-6 mb-4">
+    <h2>KYC: Página 1</h2>
+</div>
+<hr>
+<label class="col-md-6 mb-4" style="color:darkgreen"><h2><b>Progreso:</b> <i>0%</i></h2></label>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"
+         aria-valuenow="0" aria-valuemin="0"
+         aria-valuemax="100"></div>
+</div><br>
+<div style="float:right">
+    <a type="button" class="btn btn-sml btn-dark" href="/form_1_es">ES</a>
+    <a type="button" class="btn btn-sml btn-dark" href="/form_1">EN</a>
+</div>
+<div class="col-md-6 mb-4" style="color:darkred">
+    <h3><i>Detalles personales</i></h3>
+</div>
+<script type="text/javascript">
+  function displayQuestion(answer) {
+
+  document.getElementById(answer + 'Question').style.display = "block";
+
+  if (answer == "yes") { // hide the div that is not selected
+
+    document.getElementById('noQuestion').style.display = "none";
+
+  } else if (answer == "no") {
+
+    document.getElementById('yesQuestion').style.display = "none";
+
+  }
+
+}
+
+
+</script>
+<style>
+input:required:invalid {background-color: white;}
+input:required:valid {background-color: lightgreen;}
+</style>
+
+<form name="feedback" action="/submit_page_one" method="post" enctype="multipart/form-data">
+    <div class="col-md-4 mb-4">
+        <label>
+            <i>¿Eres ciudadano Mexicano?</i>
+        </label><br>
+        <label>
+            <input type="radio" id="yes" name="is_a_foreigner" value="yes"
+                   onchange="displayQuestion(this.value)"/>Si</label><br>
+        <label>
+            <input type="radio" id="no" name="is_a_foreigner" value="no"
+                   onchange="displayQuestion(this.value)"/>No</label>
+
+        <div id="yesQuestion" style="display:none;"><br/>
+            <b><i>Por favor, introduzca la siguiente información...</i></b><br><br>
+            <label for="fiscal">RFC con Homoclave</label>
+            <input class="form-control" id="fiscal" name="fiscal" type="text"
+                   pattern="[A-ZÑ&]{3,4}\d{6}[A-V1-9][A-Z1-9][0-9A]"
+                   oninvalid="setCustomValidity('Introduzca sólo letras y números. ')"
+            ><br>
+            <label for="CURP">CURP</label>
+            <input type="text" class="form-control" id="CURP" name="CURP"
+                   pattern="^([A-Z&]|[a-z&]{1})([AEIOU]|[aeiou]{1})([A-Z&]|[a-z&]{1})([A-Z&]|[a-z&]{1})([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])([HM]|[hm]{1})([AS|as|BC|bc|BS|bs|CC|cc|CS|cs|CH|ch|CL|cl|CM|cm|DF|df|DG|dg|GT|gt|GR|gr|HG|hg|JC|jc|MC|mc|MN|mn|MS|ms|NT|nt|NL|nl|OC|oc|PL|pl|QT|qt|QR|qr|SP|sp|SL|sl|SR|sr|TC|tc|TS|ts|TL|tl|VZ|vz|YN|yn|ZS|zs|NE|ne]{2})([^A|a|E|e|I|i|O|o|U|u]{1})([^A|a|E|e|I|i|O|o|U|u]{1})([^A|a|E|e|I|i|O|o|U|u]{1})([0-9]{2})$"
+                   oninvalid="setCustomValidity('Introduzca sólo letras y números. ')"
+            ><br>
+            <br><label for="fiscal_code">RFC con Homoclave</label>
+            <input class="form-control-file" id="fiscal_code" name="fiscal_code" type="file">
+            <br><label for="CURP">CURP</label>
+            <input class="form-control-file" id="CURP_code" name="CURP_code" type="file">
+            <br>
+        </div>
+
+        <div id="noQuestion" style="display:none;"><br/>
+            <b><i>Por favor complete el resto del formulario ...</i></b>
+        </div>
+    </div>
+    <hr>
+    <div class="col-md-4 mb-4">
+        <label for="first_name">Nombre</label>
+        <input pattern="[a-zA-Z]*" oninvalid="setCustomValidity('Please enter on alphabets only. ')" type="text"
+               class="form-control" id="first_name" name="first_name" placeholder="Nombre"
+               required>
+    </div>
+    <div class="col-md-4 mb-4">
+        <label for="last_name">Apellido Paterno</label>
+        <input pattern="[a-zA-Z]*" oninvalid="setCustomValidity('Please enter on alphabets only. ')" type="text"
+               class="form-control" id="last_name" name="last_name" placeholder="Apellido Paterno"
+               required>
+    </div>
+    <div class="col-md-4 mb-4">
+        <label for="middle_name">Apellido Materno</label>
+        <input pattern="[a-zA-Z]*" oninvalid="setCustomValidity('Please enter on alphabets only. ')" type="text"
+               class="form-control" id="middle_name" name="middle_name" placeholder="Apellido Materno"
+               required>
+    </div>
+    <div class="col-md-6 mb-4">
+        <label for="birthday">Fecha de Nacimiento</label>
+        <input type="date" id="birthday" name="birthday" required>
+    </div>
+    <div class="col-md-4 mb-4">
+        <label for="nationality" class="col-sm-2 col-form-label">Nacionalidad</label>
+        <select id="nationality" name="nationality" class="form-control" required>
+            <option value="">-- Seleccione uno --</option>
+            <option value="afghan">Afghan</option>
+            <option value="albanian">Albanian</option>
+            <option value="algerian">Algerian</option>
+            <option value="american">American</option>
+            <option value="andorran">Andorran</option>
+            <option value="angolan">Angolan</option>
+            <option value="antiguans">Antiguans</option>
+            <option value="argentinean">Argentinean</option>
+            <option value="armenian">Armenian</option>
+            <option value="australian">Australian</option>
+            <option value="austrian">Austrian</option>
+            <option value="azerbaijani">Azerbaijani</option>
+            <option value="bahamian">Bahamian</option>
+            <option value="bahraini">Bahraini</option>
+            <option value="bangladeshi">Bangladeshi</option>
+            <option value="barbadian">Barbadian</option>
+            <option value="barbudans">Barbudans</option>
+            <option value="batswana">Batswana</option>
+            <option value="belarusian">Belarusian</option>
+            <option value="belgian">Belgian</option>
+            <option value="belizean">Belizean</option>
+            <option value="beninese">Beninese</option>
+            <option value="bhutanese">Bhutanese</option>
+            <option value="bolivian">Bolivian</option>
+            <option value="bosnian">Bosnian</option>
+            <option value="brazilian">Brazilian</option>
+            <option value="british">British</option>
+            <option value="bruneian">Bruneian</option>
+            <option value="bulgarian">Bulgarian</option>
+            <option value="burkinabe">Burkinabe</option>
+            <option value="burmese">Burmese</option>
+            <option value="burundian">Burundian</option>
+            <option value="cambodian">Cambodian</option>
+            <option value="cameroonian">Cameroonian</option>
+            <option value="canadian">Canadian</option>
+            <option value="cape verdean">Cape Verdean</option>
+            <option value="central african">Central African</option>
+            <option value="chadian">Chadian</option>
+            <option value="chilean">Chilean</option>
+            <option value="chinese">Chinese</option>
+            <option value="colombian">Colombian</option>
+            <option value="comoran">Comoran</option>
+            <option value="congolese">Congolese</option>
+            <option value="costa rican">Costa Rican</option>
+            <option value="croatian">Croatian</option>
+            <option value="cuban">Cuban</option>
+            <option value="cypriot">Cypriot</option>
+            <option value="czech">Czech</option>
+            <option value="danish">Danish</option>
+            <option value="djibouti">Djibouti</option>
+            <option value="dominican">Dominican</option>
+            <option value="dutch">Dutch</option>
+            <option value="east timorese">East Timorese</option>
+            <option value="ecuadorean">Ecuadorean</option>
+            <option value="egyptian">Egyptian</option>
+            <option value="emirian">Emirian</option>
+            <option value="equatorial guinean">Equatorial Guinean</option>
+            <option value="eritrean">Eritrean</option>
+            <option value="estonian">Estonian</option>
+            <option value="ethiopian">Ethiopian</option>
+            <option value="fijian">Fijian</option>
+            <option value="filipino">Filipino</option>
+            <option value="finnish">Finnish</option>
+            <option value="french">French</option>
+            <option value="gabonese">Gabonese</option>
+            <option value="gambian">Gambian</option>
+            <option value="georgian">Georgian</option>
+            <option value="german">German</option>
+            <option value="ghanaian">Ghanaian</option>
+            <option value="greek">Greek</option>
+            <option value="grenadian">Grenadian</option>
+            <option value="guatemalan">Guatemalan</option>
+            <option value="guinea-bissauan">Guinea-Bissauan</option>
+            <option value="guinean">Guinean</option>
+            <option value="guyanese">Guyanese</option>
+            <option value="haitian">Haitian</option>
+            <option value="herzegovinian">Herzegovinian</option>
+            <option value="honduran">Honduran</option>
+            <option value="hungarian">Hungarian</option>
+            <option value="icelander">Icelander</option>
+            <option value="indian">Indian</option>
+            <option value="indonesian">Indonesian</option>
+            <option value="iranian">Iranian</option>
+            <option value="iraqi">Iraqi</option>
+            <option value="irish">Irish</option>
+            <option value="israeli">Israeli</option>
+            <option value="italian">Italian</option>
+            <option value="ivorian">Ivorian</option>
+            <option value="jamaican">Jamaican</option>
+            <option value="japanese">Japanese</option>
+            <option value="jordanian">Jordanian</option>
+            <option value="kazakhstani">Kazakhstani</option>
+            <option value="kenyan">Kenyan</option>
+            <option value="kittian and nevisian">Kittian and Nevisian</option>
+            <option value="kuwaiti">Kuwaiti</option>
+            <option value="kyrgyz">Kyrgyz</option>
+            <option value="laotian">Laotian</option>
+            <option value="latvian">Latvian</option>
+            <option value="lebanese">Lebanese</option>
+            <option value="liberian">Liberian</option>
+            <option value="libyan">Libyan</option>
+            <option value="liechtensteiner">Liechtensteiner</option>
+            <option value="lithuanian">Lithuanian</option>
+            <option value="luxembourger">Luxembourger</option>
+            <option value="macedonian">Macedonian</option>
+            <option value="malagasy">Malagasy</option>
+            <option value="malawian">Malawian</option>
+            <option value="malaysian">Malaysian</option>
+            <option value="maldivan">Maldivan</option>
+            <option value="malian">Malian</option>
+            <option value="maltese">Maltese</option>
+            <option value="marshallese">Marshallese</option>
+            <option value="mauritanian">Mauritanian</option>
+            <option value="mauritian">Mauritian</option>
+            <option value="mexican">Mexican</option>
+            <option value="micronesian">Micronesian</option>
+            <option value="moldovan">Moldovan</option>
+            <option value="monacan">Monacan</option>
+            <option value="mongolian">Mongolian</option>
+            <option value="moroccan">Moroccan</option>
+            <option value="mosotho">Mosotho</option>
+            <option value="motswana">Motswana</option>
+            <option value="mozambican">Mozambican</option>
+            <option value="namibian">Namibian</option>
+            <option value="nauruan">Nauruan</option>
+            <option value="nepalese">Nepalese</option>
+            <option value="new zealander">New Zealander</option>
+            <option value="ni-vanuatu">Ni-Vanuatu</option>
+            <option value="nicaraguan">Nicaraguan</option>
+            <option value="nigerien">Nigerien</option>
+            <option value="north korean">North Korean</option>
+            <option value="northern irish">Northern Irish</option>
+            <option value="norwegian">Norwegian</option>
+            <option value="omani">Omani</option>
+            <option value="pakistani">Pakistani</option>
+            <option value="palauan">Palauan</option>
+            <option value="panamanian">Panamanian</option>
+            <option value="papua new guinean">Papua New Guinean</option>
+            <option value="paraguayan">Paraguayan</option>
+            <option value="peruvian">Peruvian</option>
+            <option value="polish">Polish</option>
+            <option value="portuguese">Portuguese</option>
+            <option value="qatari">Qatari</option>
+            <option value="romanian">Romanian</option>
+            <option value="russian">Russian</option>
+            <option value="rwandan">Rwandan</option>
+            <option value="saint lucian">Saint Lucian</option>
+            <option value="salvadoran">Salvadoran</option>
+            <option value="samoan">Samoan</option>
+            <option value="san marinese">San Marinese</option>
+            <option value="sao tomean">Sao Tomean</option>
+            <option value="saudi">Saudi</option>
+            <option value="scottish">Scottish</option>
+            <option value="senegalese">Senegalese</option>
+            <option value="serbian">Serbian</option>
+            <option value="seychellois">Seychellois</option>
+            <option value="sierra leonean">Sierra Leonean</option>
+            <option value="singaporean">Singaporean</option>
+            <option value="slovakian">Slovakian</option>
+            <option value="slovenian">Slovenian</option>
+            <option value="solomon islander">Solomon Islander</option>
+            <option value="somali">Somali</option>
+            <option value="south african">South African</option>
+            <option value="south korean">South Korean</option>
+            <option value="spanish">Spanish</option>
+            <option value="sri lankan">Sri Lankan</option>
+            <option value="sudanese">Sudanese</option>
+            <option value="surinamer">Surinamer</option>
+            <option value="swazi">Swazi</option>
+            <option value="swedish">Swedish</option>
+            <option value="swiss">Swiss</option>
+            <option value="syrian">Syrian</option>
+            <option value="taiwanese">Taiwanese</option>
+            <option value="tajik">Tajik</option>
+            <option value="tanzanian">Tanzanian</option>
+            <option value="thai">Thai</option>
+            <option value="togolese">Togolese</option>
+            <option value="tongan">Tongan</option>
+            <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
+            <option value="tunisian">Tunisian</option>
+            <option value="turkish">Turkish</option>
+            <option value="tuvaluan">Tuvaluan</option>
+            <option value="ugandan">Ugandan</option>
+            <option value="ukrainian">Ukrainian</option>
+            <option value="uruguayan">Uruguayan</option>
+            <option value="uzbekistani">Uzbekistani</option>
+            <option value="venezuelan">Venezuelan</option>
+            <option value="vietnamese">Vietnamese</option>
+            <option value="welsh">Welsh</option>
+            <option value="yemenite">Yemenite</option>
+            <option value="zambian">Zambian</option>
+            <option value="zimbabwean">Zimbabwean</option>
+        </select>
+    </div>
+    <div class="col-md-4 mb-4">
+        <label for="gender" class="col-sm-2 col-form-label">Género</label>
+        <select id="gender" name="gender" class="form-control" required>
+            <option value="none">-- Seleccione uno --</option>
+            <option value="male">masculino</option>
+            <option value="female">femenina</option>
+            <option value="other">Otre</option>
+        </select>
+    </div>
+    <hr>
+    <div class="col-md-4 mb-4">
+        <label for="occupation">Ocupación</label>
+        <input  type="text"
+               class="form-control" id="occupation" name="occupation" placeholder="Ocupacion"
+               required>
+    </div>
+    <div class="col-md-4 mb-4">
+        <label for="economic_sector">Sector Económico</label>
+        <input pattern="[a-zA-Z]*" oninvalid="setCustomValidity('Por favor ingrese solo letras. ')" class="form-control"
+               id="economic_sector" name="economic_sector" placeholder="Sector Economico" required
+               type="text">
+    </div>
+    <hr>
+    <div class="col-md-4 mb-4">
+        <label for="phone_number">Teléfono</label>
+        <input pattern="[0-9-]+" oninvalid="setCustomValidity('Please enter numbers only. ')" type="text"
+               class="form-control" id="phone_number" name="phone_number" placeholder="(123)-456-7890"
+               required>
+    </div>
+    <div class="col-md-4 mb-4">
+        <label for="email">Correo Electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="my_email@example.com"
+               required>
+    </div>
+    <hr>
+    <div class="col-md-4 mb-4">
+        <label for="bank_name">Nombre del banco
+        </label>
+        <input pattern="[a-zA-Z0-9\s]*" type="text" class="form-control" id="bank_name" name="bank_name" required>
+    </div>
+    <div class="col-md-4 mb-4">
+        <label for="bank_number">Numero de cuenta bancaria</label>
+        <input pattern="[0-9]*" type="text" class="form-control" id="bank_number" name="bank_number" required>
+    </div>
+    <div class="col-md-4 mb-4">
+        <label for="passport">Identificación oficial (INE o Pasaporte)</label>
+        <input type="file" class="form-control-file" id="passport" name="passport" required>
+    </div>
+    <hr>
+    <div class="col-md-4 mb-4">
+        <button class="btn btn-outline-success" type="submit">Siguiente pagina uno</button>
+    </div>
+</form>
+{% endblock %}

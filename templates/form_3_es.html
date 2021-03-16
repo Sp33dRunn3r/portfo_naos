@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block title %}KYC Form: Page 3{% endblock %}
+{% block content %}
+<script>
+    function myFunction() {
+  // Get the checkbox
+  var checkBox = document.getElementById("myCheck");
+  // Get the output text
+  var text = document.getElementById("text");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+function myFunction2() {
+  // Get the checkbox
+  var checkBox = document.getElementById("myCheck2");
+  // Get the output text
+  var text = document.getElementById("text2");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+function myFunction3() {
+  // Get the checkbox
+  var checkBox = document.getElementById("myCheck3");
+  // Get the output text
+  var text = document.getElementById("text3");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+
+
+
+
+</script>
+<div class="col-md-4 mb-4">
+    <h2>KYC: Página 3</h2>
+    <div style="color:green">{{info_es}}</div>
+</div>
+<hr>
+<label class="col-md-6 mb-4" style="color:darkgreen"><h2><b>Progreso:</b> <i>60%</i></h2></label>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+         style="width: 60%"
+         aria-valuenow="40" aria-valuemin="0"
+         aria-valuemax="100"></div>
+</div><br>
+<div style="float:right">
+    <a type="button" class="btn btn-sml btn-dark" href="/form_3_es">
+        ES
+    </a>
+    <a type="button" class="btn btn-sml btn-dark" href="/form_3">
+        EN</a>
+</div>
+<div class="col-md-4 mb-4" style="color:darkred">
+    <h3><i>Cumplimiento y otros</i></h3>
+</div>
+<form name="feedback" action="/submit_page_three_es" method="post" enctype="multipart/form-data">
+    <div class="col-md-6 mb-4">
+        <label for="average_position">Monto de operación</label>
+        <select id="average_position" name="average_position" class="form-control" required>
+            <option value="none">-- escoger --</option>
+            <option value="50,000$ - 100,000$">50,000$ - 100,000$</option>
+            <option value="101,000$ - 300,000$">101,000$ - 300,000$</option>
+            <option value="300,000$ or more">300,000$ o mas</option>
+        </select><br>
+        <label for="operating_frequency">Frecuencia de operación</label>
+        <select id="operating_frequency" name="operating_frequency" class="form-control" required>
+            <option value="none">-- escoger --</option>
+            <option value="Low">Baja</option>
+            <option value="Medium">Media</option>
+            <option value="High">Alta</option>
+        </select><br>
+        <label for="beneficiaries">Beneficiarios</label>
+        <input type="text" class="form-control" id="beneficiaries" name="beneficiaries"
+               placeholder="Beneficiarios"><br>
+    </div>
+    <hr>
+    <div class="col-md-6 mb-4">
+        <label for="myCheck">¿Desempeña actualmente o desempeño durante el año inmediato anterior algún cargo público
+            destacado a nivel federal, estatal, municipal o distrital en México o el extranjero?</label>
+        <label>
+            <input type="checkbox" id="myCheck" name="yesOrNo" value="yes"
+                   onclick="myFunction()"/> Si</label><br>
+        <label>
+            <input type="checkbox" id="myCheck" name="yesOrNo" value="no"
+                   onchange="myFunction()"/> No</label>
+        <div class="col-md-6 mb-4" id="text" style="display:none;"><br/>
+            <b><i>Por favor, introduzca la siguiente información...</i></b><br><br>
+            <input type="text" class="form-control" id="who_1" name="who_1"
+                   placeholder="¿Quien?">
+            <input type="text" class="form-control" id="when_1" name="when_1"
+                   placeholder="¿Cuando?">
+            <input type="text" class="form-control" id="what_position_1" name="what_position_1"
+                   placeholder="¿qué posición?">
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <label for="myCheck">¿Su cónyuge o algún pariente por consanguinidad o afinidad hasta el segundo grado,
+            desempeña actualmente o desempeño durante el año inmediato anterior algún cargo público destacado a nivel
+            federal, estatal, municipal o distrital en México o en el extranjero?</label>
+        <label>
+            <input type="checkbox" id="myCheck2" name="yesOrNo" value="yes"
+                   onclick="myFunction2()"/> Si</label><br>
+        <label>
+            <input type="checkbox" id="myCheck2" name="yesOrNo" value="no"
+                   onchange="myFunction2()"/> No</label>
+        <div class="col-md-6 mb-4" id="text2" style="display:none;"><br/>
+            <b><i>Por favor, introduzca la siguiente información...</i></b><br><br>
+            <input type="text" class="form-control" id="who_2" name="who_2"
+                   placeholder="¿Quien?">
+            <input type="text" class="form-control" id="when_2" name="when_2"
+                   placeholder="¿Cuando?">
+            <input type="text" class="form-control" id="what_position_2" name="what_position_2"
+                   placeholder="¿qué posición?">
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <label for="myCheck">¿Algún tercero obtendrá los beneficios derivados de las operaciones realizadas con NAOS y
+            ejercerá los derechos de uso aprovechamiento o disposición de los recursos siendo el propietario de los
+            mismos?</label>
+        <label>
+            <input type="checkbox" id="myCheck3" name="yesOrNo" value="yes"
+                   onclick="myFunction3()"/> Si</label><br>
+        <label>
+            <input type="checkbox" id="myCheck3" name="yesOrNo" value="no"
+                   onchange="myFunction3()"/> No</label>
+        <div class="col-md-6 mb-4" id="text3" style="display:none;"><br/>
+            <b><i>Por favor, introduzca la siguiente información...</i></b><br><br>
+            <input type="text" class="form-control" id="who_3" name="who_3"
+                   placeholder="¿Quien?">
+            <input type="text" class="form-control" id="when_3" name="when_3"
+                   placeholder="¿Cuando?"><br>
+            <label><i>Por favor, Ingrese identificación oficial...</i></label>
+            <input type="file" class="form-control" id="official_id_3" name="official_id_3"
+            >
+        </div>
+    </div>
+    <hr>
+    <div class="col-md-6 mb-4">
+        <button class="btn btn-outline-success" type="submit">Siguiente página Final</button>
+    </div>
+</form>
+
+{% endblock %}

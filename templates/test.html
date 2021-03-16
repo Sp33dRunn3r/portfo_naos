@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}KYC Form: Page 1{% endblock %}
+{% block content %}
+<div class="col-md-6 mb-4">
+    <h2>KYC Form: Page 1</h2>
+</div>
+<hr>
+<label class="col-md-6 mb-4" style="color:darkgreen"><h2><b>Completion:</b> <i>0%</i></h2></label>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"
+         aria-valuenow="0" aria-valuemin="0"
+         aria-valuemax="100"></div>
+</div><br>
+<div style="float:right">
+    <a type="button" class="btn btn-sml btn-dark" href="/form_1_es.html">ES</a>
+    <a type="button" class="btn btn-sml btn-dark" href="/form_1.html">EN</a>
+</div>
+<div class="col-md-6 mb-4" style="color:darkred">
+    <h3><i>Personal Details</i></h3>
+</div>
+<script type="text/javascript">
+  function displayQuestion(answer) {
+
+  document.getElementById(answer + 'Question').style.display = "block";
+
+  if (answer == "yes") { // hide the div that is not selected
+
+    document.getElementById('noQuestion').style.display = "none";
+
+  } else if (answer == "no") {
+
+    document.getElementById('yesQuestion').style.display = "none";
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+</script>
+<style>
+input:required:invalid {background-color: white;}
+input:required:valid {background-color: lightgreen;}
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+<form name="feedback" method="post">
+    <div class="col-md-4 mb-4">
+        <label>
+            <i>Are you a Mexican Citizen?</i>
+        </label><br>
+        <label>
+            <input type="radio" id="yes" name="yesOrNo" value="yes"
+                   onchange="displayQuestion(this.value)"/>Yes</label><br>
+        <label>
+            <input type="radio" id="no" name="yesOrNo" value="no" onchange="displayQuestion(this.value)" on/>No</label>
+
+        <div id="yesQuestion" style="display:none;"><br/>
+            <b><i>Please enter the following information...</i></b><br><br>
+            <label for="fiscal">CURP</label>
+            <input class="form-control" id="fiscal" type="text"
+                   pattern="^([A-Z&]|[a-z&]{1})([AEIOU]|[aeiou]{1})([A-Z&]|[a-z&]{1})([A-Z&]|[a-z&]{1})([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])([HM]|[hm]{1})([AS|as|BC|bc|BS|bs|CC|cc|CS|cs|CH|ch|CL|cl|CM|cm|DF|df|DG|dg|GT|gt|GR|gr|HG|hg|JC|jc|MC|mc|MN|mn|MS|ms|NT|nt|NL|nl|OC|oc|PL|pl|QT|qt|QR|qr|SP|sp|SL|sl|SR|sr|TC|tc|TS|ts|TL|tl|VZ|vz|YN|yn|ZS|zs|NE|ne]{2})([^A|a|E|e|I|i|O|o|U|u]{1})([^A|a|E|e|I|i|O|o|U|u]{1})([^A|a|E|e|I|i|O|o|U|u]{1})([0-9]{2})$"
+                   oninvalid="setCustomValidity('This Fiscal doesn't work. ')"
+            ><br>
+        </div>
+    </div>
+</form>
+

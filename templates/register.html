@@ -1,0 +1,175 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="../static/logo-naos-3.png" rel="icon">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+    function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'Passwords Match';
+    confirm_password.setCustomValidity('')
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'Passwords do not Match';
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  }
+}
+
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+
+
+
+</script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    body {
+    font-family: "Lato", sans-serif;
+}
+
+
+
+.main-head{
+    height: 150px;
+    background: #FFF;
+
+}
+
+.sidenav {
+    height: 100%;
+    background-color: #000;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+.main {
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%;
+    }
+
+    .sidenav{
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form{
+        margin-top: 80%;
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+}
+
+
+.login-main-text{
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+
+.login-main-text h2{
+    font-weight: 300;
+}
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.logo_2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+
+</style>
+<div style="float:right">
+    <a type="button" class="btn btn-sml btn-black" href="/register">ES</a>
+    <a type="button" class="btn btn-sml btn-black" href="/register_english">EN</a>
+</div>
+<div class="sidenav">
+    <div class="login-main-text">
+        <img class="logo" src="../static/logo-naos-2.png" alt="naos logo"><br><br><br>
+        <h2 class="row justify-content-center align-items-center" style="color:pink">{{detail}}</h2>
+        <img class="logo_2" src="../static/logo-naos-5.png" alt="naos logo"><br><br><br>
+    </div>
+</div>
+<div class="main">
+    <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+            <form id="register-form" class="form" action="/form_register" method="post">
+                <h3 class="text-center text-black">Registro Usuario</h3>
+                <div class="form-group">
+                    <label for="email" class="text-black">Email:</label><br>
+                    <input type="email" name="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña:</label><br>
+                    <input type="password" name="password" id="password" class="form-control"
+                           onkeyup='check();' required>
+                </div>
+                <div class="form-group">
+                    <label>Confirmar contraseña:</label><br>
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control"
+                           onkeyup='check();' required>
+                    <span id='message'></span>
+                </div>
+                <div class="form-group">
+                    <label class="text-black"><span>Mostrar Contraseña</span> <span><input
+                            type="checkbox" onclick="myFunction()"></span></label><br><br>
+                    <label class="text-black"><span>Soy mayor de edad</span> <span><input
+                            type="checkbox" required></span></label><br><br>
+                    <input type="submit" name="submit" class="btn btn-outline-danger" value="Registrarse">
+                </div>
+            </form>
+            <br>
+            ¿Ya tienes una cuenta?<br><br>
+            <a href="/login.html">
+                <button class="btn btn-outline-dark btn-md">Acceder como usuario</button>
+            </a>
+        </div>
+    </div>
+</div>

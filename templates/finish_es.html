@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}KYC Form: Page 1{% endblock %}
+{% block content %}
+<style>
+    .center {
+ text-align: center;
+}
+.logo_2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+</style>
+<div class="center">
+    <i><h2 style="color:darkred">Estos son los pasos finales...</h2></i>
+    <br>
+    Revise su correo electrónico para convertirse en miembro oficial de NAOS Blockchain.
+</div>
+<hr>
+<label class="col-md-6 mb-4" style="color:darkgreen"><h2><b>Progreso:</b> <i>90%</i></h2></label>
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+         style="width: 90%" aria-valuenow="0" aria-valuemin="0"
+         aria-valuemax="100"></div>
+    <br>
+</div><br>
+<div class="center">
+    <h2><i>Resumen:</i></h2><br>
+    <h5>
+        Su información se ha enviado correctamente a NAOS Blockchain y se tomarán más medidas por correo electrónico.
+        Gracias por completar el KYC, alguien se comunicará con usted pronto.
+    </h5><br><br>
+    <img class="logo_2" src="../static/logo-naos-3.png" alt="naos logo 4">
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<style>
+    .center {
+ text-align: center;
+}
+
+</style>
+<div class="center">
+    <h1>Bienvenidos {{name}}!</h1>
+</div>
+<div class="center">
+    <h1 style="color:darkred">Página de inicio</h1>
+    <h2>Este es el sitio web oficial de NAOS Blockchain KYC.</h2><br>
+    Siga el enlace del botón o haga clic en "Página 1 de KYC" en el menú para comenzar el proceso del
+    formulario.<br><br>
+    <div class="center">
+        <a type="button" class="btn btn-success btn-lg col-md-4 mb-4" href="/KYC_type_es">Comenzar el proceso
+            KYC</a>
+    </div>
+    <div style="color:darkblue"><i>
+        Si ya ha completado su formulario KYC, consulte el correo electrónico para obtener más instrucciones.
+    </i></div>
+    <hr>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<style>
+    .center {
+ text-align: center;
+}
+
+</style>
+<div class="center">
+    <div style="float:right">
+        <a type="button" class="btn btn-sml btn-dark" href="/KYC_type_es">ES</a>
+        <a type="button" class="btn btn-sml btn-dark" href="/KYC_type_en">EN</a>
+    </div>
+    <h2>Este es el sitio web oficial de NAOS BlockChain KYC.</h2><br>
+    <div style="word-wrap: break-word">Elija "KYC Personas Fisicas" para continuar el KYC como individuo,
+        o elija "KYC Personas Legal (o Morales)", para continuar el KYC como una empresa o negocio.
+    </div>
+    <br><br>
+    <a type="button" class="btn btn-primary btn-lg col-md-4 mb-4" href="/form_1_es">KYC Personas Fisicas</a><br>
+    <a type="button" class="btn btn-danger btn-lg col-md-4 mb-4" href="/form_1_morales_es">KYC Personas Morales</a>
+    <hr>
+</div>
+{% endblock %}
