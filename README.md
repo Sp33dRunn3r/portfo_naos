@@ -11,3 +11,5 @@ A way to Automate the creation of “Completion Forms” which includes all of t
 Relatively smooth access for Users to edit information if need be, or reopen their personal data-sheet (that connects to the main database) for further modification.
 
 This is the way in which I approached this project, and just some of the techniques I chose to use with the given objectives.
+
+_(Read PDF for more information)_
